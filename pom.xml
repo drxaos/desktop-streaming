@@ -27,6 +27,7 @@
             <artifactId>vertx-web</artifactId>
             <version>3.0.0</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -36,7 +37,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.drxaos.desktopstreaming.Server</mainClass>
+                            <mainClass>com.github.drxaos.desktopstreaming.ScreenshotSource</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
