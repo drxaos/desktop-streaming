@@ -4,6 +4,6 @@ import java.awt.image.BufferedImage;
 
 public interface ImageSource {
 
-    public BufferedImage getNext();
+    BufferedImage getImage();
 
 }

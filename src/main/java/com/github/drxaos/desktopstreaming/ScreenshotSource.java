@@ -33,7 +33,7 @@ public class ScreenshotSource implements ImageSource {
     }
 
     @Override
-    public BufferedImage getNext() {
+    public BufferedImage getImage() {
         return getDesktopScreenshot();
     }
 

@@ -51,9 +51,7 @@ public class Server extends AbstractVerticle {
             final boolean[] ready = new boolean[]{true};
             final int[] count = new int[]{0};
 
-            ws.closeHandler(event -> {
-                System.out.println("Done" + count[0]);
-            });
+            ws.closeHandler(event -> System.out.println("Done" + count[0]));
 
             final BufferedImage[] prev = new BufferedImage[]{null};
 
@@ -70,7 +68,7 @@ public class Server extends AbstractVerticle {
                         // new image request
                         final long start = System.currentTimeMillis();
 
-                        BufferedImage image = source.getNext();
+                        BufferedImage image = source.getImage();
                         BufferedImage diff = prev[0] == null ? image : diff(prev[0], image);
 //                        BufferedImage diff = image;
                         if (diff != null) {
@@ -94,7 +92,7 @@ public class Server extends AbstractVerticle {
                                         for (int i = 0; i < 20; i++) {
                                             Thread.sleep(100);
 
-                                            BufferedImage image = source.getNext();
+                                            BufferedImage image = source.getImage();
                                             BufferedImage diff = prev[0] == null ? image : diff(prev[0], image);
                                             if (diff != null) {
                                                 ImageIO.write(diff, "png", stream);
@@ -120,7 +118,7 @@ public class Server extends AbstractVerticle {
                         }
                     } else if (s.equals("s")) {
                         // image size request
-                        BufferedImage image = source.getNext();
+                        BufferedImage image = source.getImage();
                         ws.writeFinalTextFrame("d" + image.getWidth() + "x" + image.getHeight());
                         ready[0] = true;
                     }
